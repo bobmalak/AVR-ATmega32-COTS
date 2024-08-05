@@ -43,4 +43,4 @@ The APP layer contains application-level code that utilizes the services provide
 ## Getting Started
 To get started with this repository, clone it to your local machine using the following command:
 ```sh
-git clone https://github.com/yourusername/AVR-ATmega32_COTS.git
+git clone https://github.com/bobmalak/AVR-ATmega32-COTS.git
