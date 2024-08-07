@@ -1,16 +1,22 @@
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************    Author:   Abanob Malak     *****************************/
-/*********************    File:     BIT_MATH         *****************************/
+/*********************    Layer:    MCAL             *****************************/
+/*********************    SWC:      EXTI             *****************************/
 /*********************    Version:  1.00             *****************************/
 /*********************************************************************************/
 /*********************************************************************************/
-#ifndef BIT_MATH_H
-#define BIT_MATH_H
+#ifndef EXTI_PRIVATE_H_
+#define EXTI_PRIVATE_H_
 
-#define SET_BIT(REG,BIT_POSITION)     	REG |= (1<<BIT_POSITION)
-#define CLR_BIT(REG,BIT_POSITION)   	REG &= ~(1<<BIT_POSITION)
-#define GET_BIT(REG,BIT_POSITION)     	REG & (1<<BIT_POSITION)
-#define TOGGLE_BIT(REG,BIT_POSITION) 	REG ^= (1<<BIT_POSITION)
+#define LOW_LEVEL								1
+#define ON_CHANGE								2
+#define	FALLING_EDGE							3
+#define RISING_EDGE								4
+
+#define ENABLED									1
+#define DISABLED								2
+
+
 
 #endif

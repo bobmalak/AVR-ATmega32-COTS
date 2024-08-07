@@ -1,16 +1,22 @@
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************    Author:   Abanob Malak     *****************************/
-/*********************    File:     BIT_MATH         *****************************/
+/*********************    Layer:    MCAL             *****************************/
+/*********************    SWC:      GIE              *****************************/
 /*********************    Version:  1.00             *****************************/
 /*********************************************************************************/
 /*********************************************************************************/
-#ifndef BIT_MATH_H
-#define BIT_MATH_H
 
-#define SET_BIT(REG,BIT_POSITION)     	REG |= (1<<BIT_POSITION)
-#define CLR_BIT(REG,BIT_POSITION)   	REG &= ~(1<<BIT_POSITION)
-#define GET_BIT(REG,BIT_POSITION)     	REG & (1<<BIT_POSITION)
-#define TOGGLE_BIT(REG,BIT_POSITION) 	REG ^= (1<<BIT_POSITION)
+#include "../../LIB/BIT_MATH.h"
+#include "../../LIB/STD_TYPES.h"
 
-#endif
+#include "GIE_interface.h"
+#include "GIE_register.h"
+
+void GIE_voidEnable(void){
+    SET_BIT(SREG,SREG_I);
+}
+
+void GIE_voidDisable(void){
+    CLR_BIT(SREG,SREG_I);
+}
