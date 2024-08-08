@@ -2,18 +2,20 @@
 /*********************************************************************************/
 /*********************    Author:   Abanob Malak     *****************************/
 /*********************    Layer:    MCAL             *****************************/
-/*********************    SWC:      GIE              *****************************/
+/*********************    SWC:      WDT              *****************************/
 /*********************    Version:  1.00             *****************************/
 /*********************************************************************************/
 /*********************************************************************************/
-#ifndef GIE_REGISTER_H_
-#define GIE_REGISTER_H_
 
-#define GIE_REGISTER_H_
+#ifndef WDT_REGISTER_H_
+#define WDT_REGISTER_H_
+
+#define WDTCR					*((volatile u8*)(0x41))
+#define WDTCR_WDTOE				4
+#define WDTCR_WDE				3
+#define WDTCR_WDP2				2
+#define WDTCR_WDP1				1
+#define WDTCR_WDP0				0
 
 
-#define SREG                *((volatile u8*) (0x5f))
-#define SREG_I              7
-
-
-#endif
+#endif /* WDT_REGISTER_H_ */

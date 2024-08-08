@@ -8,10 +8,14 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include MCAL/4-ADC/subdir.mk
+-include MCAL/7-WATCHDOG/subdir.mk
+-include MCAL/6-TIMER/subdir.mk
+-include MCAL/5-ADC/subdir.mk
+-include MCAL/4-GIE/subdir.mk
 -include MCAL/3-EXTI/subdir.mk
 -include MCAL/2-PORT/subdir.mk
 -include MCAL/1-DIO/subdir.mk
+-include LIB/subdir.mk
 -include HAL/KPD/subdir.mk
 -include HAL/CLCD/subdir.mk
 -include subdir.mk
