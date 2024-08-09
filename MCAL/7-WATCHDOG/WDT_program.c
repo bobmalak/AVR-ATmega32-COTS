@@ -7,7 +7,6 @@
 /*********************************************************************************/
 /*********************************************************************************/
 
-
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/STD_TYPES.h"
 
@@ -18,7 +17,7 @@
 
 
 void WDT_voidSleep(u8 Copy_u8SleepTime){
-	//clear pre scaler bits
+	//clear prescaler bits
 	WDTCR&= PRESCALER_MASK;
 	//set required prescaler
 	WDTCR|=Copy_u8SleepTime;

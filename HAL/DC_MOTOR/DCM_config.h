@@ -1,27 +1,18 @@
 /*********************************************************************************/
 /*********************************************************************************/
 /*********************    Author:   Abanob Malak     *****************************/
-/*********************    Layer:    MCAL             *****************************/
-/*********************    SWC:      WDT              *****************************/
+/*********************    Layer:    HAl              *****************************/
+/*********************    SWC:      DCM              *****************************/
 /*********************    Version:  1.00             *****************************/
 /*********************************************************************************/
 /*********************************************************************************/
 
-#ifndef WDT_INTERFACE_H_
-#define WDT_INTERFACE_H_
+#ifndef DCM_CONFIG_H_
+#define DCM_CONFIG_H_
 
-#define SLEEP_16_3_ms			0
-#define SLEEP_32_5_ms			1
-#define SLEEP_65_ms				2
-#define SLEEP_0_13_s			3
-#define SLEEP_0_26_s			4
-#define SLEEP_0_52_s			5
-#define SLEEP_1_s				6
-#define SLEEP_2_1_s				7
+#define DCM_PORT			    		DIO_u8PORTA
+#define DCM_CTR_CLKWISE_PIN		    	DIO_u8PIN0
+#define DCM_CLKWISE_PIN				    DIO_u8PIN1
 
-
-void WDT_voidSleep(u8 Copy_u8SleepTime);
-void WDT_voidEnable(void);
-void WDT_voidDisable(void);
 
 #endif

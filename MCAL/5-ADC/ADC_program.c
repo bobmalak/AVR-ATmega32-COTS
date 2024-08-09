@@ -115,9 +115,10 @@ u8 ADC_u8StartConversionSynch(u8 Copy_u8Channel,u16* Copy_pu16Reading){
 			SET_BIT(ADCSRA,ADCSRA_ADSC);
 
 			//polling until the conversion is finished using the interrupt flag
-			while((GET_BIT(ADCSRA,ADCSRA_ADIF)==0) && (Local_u32Counter!=ADC_u32TIMEOUT)){
+			while((GET_BIT(ADCSRA, ADCSRA_ADIF) == 0) && (Local_u32Counter < ADC_u32TIMEOUT)) {
 				Local_u32Counter++;
 			}
+
 			//clearing the interrupt flag by writing 1
 			if(Local_u32Counter==ADC_u32TIMEOUT){
 				//loop is broken because timeout is reached
@@ -212,27 +213,33 @@ u8 ADC_u8StartChainConversionAsynch(Chain_t* Copy_psADCChain){
 	return Local_u8ErrorState;
 }
 
-u8 ADC_u8StartChainConversionSynch(Chain_t* Copy_psADCChain){
-	u8 Local_u8ErrorState=OK;
+u8 ADC_u8StartChainConversionSynch(Chain_t* Copy_psADCChain) {
+	u8 Local_u8ErrorState = OK;
 
-	if(ADC_u8BusyState==IDLE)
-	{
-		if(Copy_psADCChain!=NULL){
-			u8 Local_u8Iterator;
-			for(Local_u8Iterator=0;Local_u8Iterator<Copy_psADCChain->Size;Local_u8Iterator++){
-				ADC_u8StartConversionSynch(Copy_psADCChain->ChannelArr[Local_u8Iterator],Copy_psADCChain->ResultArr[Local_u8Iterator]);
+	/* Check if the ADC is idle */
+	if (ADC_u8BusyState == IDLE) {
+		/* Validate input pointer */
+		if (Copy_psADCChain != NULL) {
+			/* Iterate over the chain and perform synchronous conversions */
+			for (u8 Local_u8Iterator = 0; Local_u8Iterator < Copy_psADCChain->Size; Local_u8Iterator++) {
+				/* Start conversion and store the result */
+				Local_u8ErrorState = ADC_u8StartConversionSynch(Copy_psADCChain->ChannelArr[Local_u8Iterator],
+						&Copy_psADCChain->ResultArr[Local_u8Iterator]);
+				/* Check if the conversion was successful */
+				if (Local_u8ErrorState != OK) {
+					break;  /* Exit loop if an error occurs */
+				}
 			}
+		} else {
+			Local_u8ErrorState = NULL_PTR;  /* Null pointer error */
 		}
-		else{
-			Local_u8ErrorState=NULL_PTR;
-		}
+	} else {
+		Local_u8ErrorState = BUSY_FUNC;  /* ADC is busy */
 	}
-	else{
-		Local_u8ErrorState=BUSY_FUNC;
-	}
-	return Local_u8ErrorState;
 
+	return Local_u8ErrorState;
 }
+
 
 void __vector_16(void)   __attribute__((signal));
 void __vector_16(void){

@@ -8,6 +8,7 @@
 /*********************************************************************************/
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/STD_TYPES.h"
+#include "../../LIB/MATH_HELPER.h"
 
 
 #include "TIMER_register.h"
@@ -39,9 +40,12 @@ static void TIMER2_voidScheduleFunc(void){
 /********************************************************GENERAL TIMER FUNCTIONS*****************************************
  ************************************************************************************************************************/
 
-u8 TIMER_u8SetTimerVal(u8 Copy_u8TimerID,u16 Copy_u16Value){
+u8 TIMER_u8SetTimerVal(u8 Copy_u8TimerID,u16 Copy_u16Value)
+{
 	u8 Local_u8ErrorState=OK;
-	switch(Copy_u8TimerID){
+
+	switch(Copy_u8TimerID)
+	{
 	case TIMER0 : if(Copy_u16Value<256){TCNT0  = Copy_u16Value;} else{Local_u8ErrorState=NOT_OK;} break;
 	case TIMER1 : TCNT1 = Copy_u16Value; break;
 	case TIMER2 : if(Copy_u16Value<256){TCNT2  = Copy_u16Value;} else{Local_u8ErrorState=NOT_OK;} break;
@@ -64,8 +68,11 @@ u8 TIMER_u8GetTimerVal(u8 Copy_u8TimerID,u16* Copy_pu16Value){
 
 
 u8 TIMER_u8SetCompMatch(u8 Copy_u8TimerID,u16 Copy_u16Value){
+
 	u8 Local_u8ErrorState=OK;
-	switch(Copy_u8TimerID){
+
+	switch(Copy_u8TimerID)
+	{
 	case TIMER0  : if(Copy_u16Value<256){OCR0  = Copy_u16Value;} else{Local_u8ErrorState=NOT_OK;} break;
 	case TIMER1A : OCR1A = Copy_u16Value; break;
 	case TIMER1B : OCR1B = Copy_u16Value; break;
@@ -120,7 +127,8 @@ u8 TIMER_u8SetIntStatus(u8 Copy_u8InterruptID, u8 Copy_u8Status){
 u8 TIMER0_u8Init(Timer_t* Copy_psTimer){
 	u8 Local_u8ErrorState=OK;
 	//Initialize Wave Generation Mode
-	if(Copy_psTimer!=NULL){
+	if(Copy_psTimer!=NULL)
+	{
 		if(Copy_psTimer->WaveGenMode==TIMER_NORMAL){
 			CLR_BIT(TCCR0,TCCR0_WGM01);
 			CLR_BIT(TCCR0,TCCR0_WGM00);
@@ -140,6 +148,7 @@ u8 TIMER0_u8Init(Timer_t* Copy_psTimer){
 		else{
 			Local_u8ErrorState=NOT_OK;
 		}
+
 		//Initialize Compare Match Output Mode
 		TCCR0&=COMP_MATCH_OUT_MASK;
 		TCCR0|=((Copy_psTimer->CompareMatchOutputMode)<<4);
@@ -177,7 +186,10 @@ u8 TIMER0_u8Init(Timer_t* Copy_psTimer){
 
 
 u8 TIMER0_delay_ms(Timer_t* Copy_psTimer,u16 Copy_u16Time){
-	u8 Local_u8ErrorState=OK,Local_u8Break=1; u16 Local_u16Counter=0;u32 Local_u32usTime,Local_u32CompMatchCount;
+	u8 Local_u8ErrorState=OK,Local_u8Break=1;
+	u16 Local_u16Counter=0;
+	u32 Local_u32usTime,Local_u32CompMatchCount;
+
 	if(Copy_psTimer!=NULL){
 		Timer_t Timer ={TIMER_CTC,PRSCLR_DIV_BY_8,OCM_DISCONNECT,INT_DISABLE,INT_DISABLE};
 		TIMER_u8SetCompMatch(TIMER0,250);
