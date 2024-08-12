@@ -9,8 +9,20 @@
 
 #ifndef GIE_INTERFACE_H_
 #define GIE_INTERFACE_H_
-
+/************************************************************************************************/
+/* Function Name : GIE_voidEnable                                                               */
+/* Description    : Enable Global Interrupts by setting the corresponding bit in the SREG register */
+/* Fun. Argument1 : None                                                                       */
+/* Fun. Return    : None                                                                       */
+/************************************************************************************************/
 void GIE_voidEnable(void);
+
+/************************************************************************************************/
+/* Function Name : GIE_voidDisable                                                              */
+/* Description    : Disable Global Interrupts by clearing the corresponding bit in the SREG register */
+/* Fun. Argument1 : None                                                                       */
+/* Fun. Return    : None                                                                       */
+/************************************************************************************************/
 void GIE_voidDisable(void);
 
 #endif

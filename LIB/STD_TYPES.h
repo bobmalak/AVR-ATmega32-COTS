@@ -6,7 +6,6 @@
 /*********************************************************************************/
 /*********************************************************************************/
 
-
 #ifndef STD_TYPES_H
 #define STD_TYPES_H
 
@@ -31,4 +30,6 @@ typedef double  f64 ;                // 8 Byte
 #define			NULL_PTR	 	2
 #define 		BUSY_FUNC	 	3
 #define 		FUNC_TIMEOUT	4
+
+
 #endif

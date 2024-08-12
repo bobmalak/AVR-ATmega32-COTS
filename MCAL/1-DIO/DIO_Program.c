@@ -14,15 +14,6 @@
 #include "DIO_Private.h"
 #include "DIO_Register.h"
 
-/************************************************************************************************/
-/* Function Name : DIO_u8SetPinValue                                                           */
-/* Description : Set value of one pin of the Port register                                      */
-/* Fun. Argument1: Copy_u8Port {DIO_u8PORTA, DIO_u8PORTB, DIO_u8PORTC, DIO_u8PORTD}             */
-/* Fun. Argument2: Copy_u8Pin {DIO_u8PIN0, DIO_u8PIN1, DIO_u8PIN2, DIO_u8PIN3,                  */
-/*                            DIO_u8PIN4, DIO_u8PIN5, DIO_u8PIN6, DIO_u8PIN7}                   */
-/* Fun. Argument3: Copy_u8Value {DIO_u8PIN_LOW, DIO_u8PIN_HIGH}                                 */
-/* Fun. Return : u8                                                                             */
-/************************************************************************************************/
 u8 DIO_u8SetPinValue(u8 Copy_u8Port, u8 Copy_u8Pin, u8 Copy_u8Value)
 {
     u8 Local_u8ErrorState = 0;
@@ -63,13 +54,7 @@ u8 DIO_u8SetPinValue(u8 Copy_u8Port, u8 Copy_u8Pin, u8 Copy_u8Value)
     return Local_u8ErrorState;
 }
 
-/************************************************************************************************/
-/* Function Name : DIO_u8SetPORTValue                                                           */
-/* Description : Set value of the whole Port register                                           */
-/* Fun. Argument1: Copy_u8Port {DIO_u8PORTA, DIO_u8PORTB, DIO_u8PORTC, DIO_u8PORTD}             */
-/* Fun. Argument2: Copy_u8Direction {DIO_u8PORT_LOW, DIO_u8PORT_HIGH}                           */
-/* Fun. Return : u8                                                                             */
-/************************************************************************************************/
+
 u8 DIO_u8SetPORTValue(u8 Copy_u8Port, u8 Copy_u8Direction)
 {
     u8 Local_u8ErrorState = 0;
@@ -85,15 +70,7 @@ u8 DIO_u8SetPORTValue(u8 Copy_u8Port, u8 Copy_u8Direction)
     return Local_u8ErrorState;
 }
 
-/************************************************************************************************/
-/* Function Name : DIO_u8GetPinValue                                                            */
-/* Description : Get value of one pin of the Port register                                      */
-/* Fun. Argument1: Copy_u8Port {DIO_u8PORTA, DIO_u8PORTB, DIO_u8PORTC, DIO_u8PORTD}             */
-/* Fun. Argument2: Copy_u8Pin {DIO_u8PIN0, DIO_u8PIN1, DIO_u8PIN2, DIO_u8PIN3,                  */
-/*                            DIO_u8PIN4, DIO_u8PIN5, DIO_u8PIN6, DIO_u8PIN7}                   */
-/* Fun. Argument3: Copy_pu8Value pointer to store the value of the pin                          */
-/* Fun. Return : u8                                                                             */
-/************************************************************************************************/
+
 u8 DIO_u8GetPinValue(u8 Copy_u8Port, u8 Copy_u8Pin, u8* Copy_pu8Value)
 {
     u8 Local_u8ErrorState = 0;

@@ -197,7 +197,7 @@ u8 TIMER0_delay_ms(Timer_t* Copy_psTimer,u16 Copy_u16Time){
 		Local_u32CompMatchCount=Local_u32usTime/250;
 		TIMER0_u8Init(&Timer);
 		while(Local_u8Break==1){
-			if(GET_BIT(TIFR,TIFR_OCF0)==1){
+			if((GET_BIT(TIFR,TIFR_OCF0))==1){
 				if(Local_u16Counter==Local_u32CompMatchCount){
 					Local_u8Break=0;
 					SET_BIT(TIFR,TIFR_OCF0);
@@ -500,7 +500,7 @@ u8 TIMER2_delay_ms(Timer_t* Copy_psTimer,u16 Copy_u16Time){
 		Local_u32CompMatchCount=Local_u32usTime/250;
 		TIMER2_u8Init(&Timer);
 		while(Local_u8Break==1){
-			if(GET_BIT(TIFR,TIFR_OCF2)==1){
+			if((GET_BIT(TIFR,TIFR_OCF2))==1){
 				if(Local_u16Counter==Local_u32CompMatchCount){
 					Local_u8Break=0;
 					SET_BIT(TIFR,TIFR_OCF2);
@@ -533,7 +533,7 @@ u8 TIMER2_delay_us(Timer_t* Copy_psTimer,u16 Copy_u16Time){
 		Local_u32CompMatchCount=Local_u32usTime/Local_u8CompMatch;
 		TIMER2_u8Init(&Timer);
 		while(Local_u8Break==1){
-			if(GET_BIT(TIFR,TIFR_OCF2)==1){
+			if((GET_BIT(TIFR,TIFR_OCF2))==1){
 				if(Local_u16Counter==Local_u32CompMatchCount){
 					Local_u8Break=0;
 					SET_BIT(TIFR,TIFR_OCF2);
@@ -572,7 +572,9 @@ u8 TIMER2_u8PWMGenerate(Timer_t* Copy_psTimer,u8 Copy_u8DutyCycle){
 
 
 u8 TIMER2_u8Schedule(u16 Copy_u16msDelayTime,void(*Copy_pvFunc)(void),u8 Copy_u8Repeatability){
-	u8 Local_u8ErrorState=OK; u16 Local_u16Counter=0;u32 Local_u32usTime,Local_u32CompMatchCount;
+	u8  Local_u8ErrorState=OK;
+	u32 Local_u32usTime,Local_u32CompMatchCount;
+
 	if(Copy_pvFunc!=NULL){
 		TIMER2_pvScheduleFunc=Copy_pvFunc;
 		TIMERS_pvCallBackFunc[INT_TIMER2_COMP]= (&TIMER2_voidScheduleFunc);

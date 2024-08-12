@@ -115,7 +115,7 @@ u8 ADC_u8StartConversionSynch(u8 Copy_u8Channel,u16* Copy_pu16Reading){
 			SET_BIT(ADCSRA,ADCSRA_ADSC);
 
 			//polling until the conversion is finished using the interrupt flag
-			while((GET_BIT(ADCSRA, ADCSRA_ADIF) == 0) && (Local_u32Counter < ADC_u32TIMEOUT)) {
+			while(((GET_BIT(ADCSRA, ADCSRA_ADIF)) == 0) && (Local_u32Counter < ADC_u32TIMEOUT)) {
 				Local_u32Counter++;
 			}
 

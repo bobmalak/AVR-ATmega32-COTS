@@ -20,8 +20,31 @@
 #define SLEEP_2_1_s				7
 
 
+/************************************************************************************************/
+/* Function Name  : WDT_voidSleep                                                               */
+/* Description    : Set the Watchdog Timer to generate a sleep period based on the provided     */
+/*                   sleep time configuration.                                                  */
+/* Fun. Argument1 : u8 Copy_u8SleepTime  Sleep time configuration option from the defined set.  */
+/* Fun. Return    : None                                                                        */
+/************************************************************************************************/
 void WDT_voidSleep(u8 Copy_u8SleepTime);
+
+
+/************************************************************************************************/
+/* Function Name  : WDT_voidEnable                                                              */
+/* Description    : Enable the Watchdog Timer.                                                  */
+/* Fun. Argument1 : None                                                                        */
+/* Fun. Return    : None                                                                        */
+/************************************************************************************************/
 void WDT_voidEnable(void);
+
+
+/************************************************************************************************/
+/* Function Name  : WDT_voidDisable                                                             */
+/* Description    : Disable the Watchdog Timer.                                                 */
+/* Fun. Argument1 : None                                                                        */
+/* Fun. Return    : None                                                                        */
+/************************************************************************************************/
 void WDT_voidDisable(void);
 
 #endif

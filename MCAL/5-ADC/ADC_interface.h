@@ -49,14 +49,51 @@ typedef struct Chain{
 	u8 Size;
 	void (*NotiFunc)(void);
 }Chain_t;
-
+/************************************************************************************************/
+/* Function Name  : ADC_voidInit                                                                */
+/* Description    : Initialize the ADC module and configure its settings                        */
+/* Fun. Argument1 : None                                                                        */
+/* Fun. Return    : None                                                                        */
+/************************************************************************************************/
 void ADC_voidInit(void);
 
+
+/************************************************************************************************/
+/* Function Name  : ADC_u8StartConversionSynch                                                  */
+/* Description    : Start an ADC conversion synchronously and wait for completion               */
+/* Fun. Argument1 : Copy_u8Channel - Channel to be used for ADC conversion                      */
+/* Fun. Argument2 : Copy_pu16Reading - Pointer to store the ADC result                          */
+/* Fun. Return    : u8 - Status of the conversion process                                       */
+/************************************************************************************************/
 u8 ADC_u8StartConversionSynch(u8 Copy_u8Channel,u16* Copy_pu16Reading);
 
+
+/************************************************************************************************/
+/* Function Name  : ADC_u8StartConversionAsynch                                                 */
+/* Description    : Start an ADC conversion asynchronously and notify via callback function     */
+/* Fun. Argument1 : Copy_u8Channel - Channel to be used for ADC conversion                      */
+/* Fun. Argument2 : Copy_pu16Reading - Pointer to store the ADC result                          */
+/* Fun. Argument3 : Copy_pvNotificationFunc - Function pointer for notification upon completion */
+/* Fun. Return    : u8 - Status of the conversion process                                       */
+/************************************************************************************************/
 u8 ADC_u8StartConversionAsynch(u8 Copy_u8Channel,u16* Copy_pu16Reading, void(*Copy_pvNotificationFunc)(void));
 
+
+/************************************************************************************************/
+/* Function Name  : ADC_u8StartChainConversionAsynch                                            */
+/* Description    : Start a chain of ADC conversions asynchronously                             */
+/* Fun. Argument1 : Copy_psADCChain - Pointer to the chain structure with channels and results  */
+/* Fun. Return    : u8 - Status of the chain conversion process                                 */
+/************************************************************************************************/
 u8 ADC_u8StartChainConversionAsynch(Chain_t* Copy_psADCChain);
 
+
+/************************************************************************************************/
+/* Function Name  : ADC_u8StartChainConversionSynch                                             */
+/* Description    : Start a chain of ADC conversions synchronously                              */
+/* Fun. Argument1 : Copy_psADCChain - Pointer to the chain structure with channels and results  */
+/* Fun. Return    : u8 - Status of the chain conversion process                                 */
+/************************************************************************************************/
 u8 ADC_u8StartChainConversionSynch(Chain_t* Copy_psADCChain);
+
 #endif

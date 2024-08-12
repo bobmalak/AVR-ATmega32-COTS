@@ -9,6 +9,12 @@
 #ifndef PORT_INTERFACE_H_
 #define PORT_INTERFACE_H_
 
+/************************************************************************************************/
+/* Function Name : PORT_voidInit                                                                */
+/* Description 	 : Initializes the data direction and initial value for all PORT registers      */
+/* Fun. Return 	 : void                                                                         */
+/************************************************************************************************/
 void PORT_voidInit(void);
+
 
 #endif
