@@ -9,5 +9,14 @@
 
 #ifndef DAC_INTERFACE_H_
 #define DAC_INTERFACE_H_
+
+/************************************************************************************************/
+/* Function Name  : DAC_voidSetAnalogVolt                                                       */
+/* Description    : Set the output analog voltage of the DAC based on the input value.          */
+/* Fun. Argument1 : u8 Copy_u8Volt      Desired voltage level in the DAC range.                 */
+/* Fun. Return    : None                                                                        */
+/************************************************************************************************/
 void DAC_voidSetAnalogVolt(u8 Copy_u8Volt);
+
 #endif
+
